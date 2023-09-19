@@ -1,0 +1,4 @@
+1) The comment should be meaningful and descriptive. 
+2) Don’t end the commit message with a period
+3) Keep commit messages under 50 characters – use the extended window for the details. 
+4) Always write in an “active” voice.
