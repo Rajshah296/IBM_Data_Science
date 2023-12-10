@@ -109,9 +109,9 @@ def update_output_container(input_year, selected_stats):
  # Yearly Statistic Report Plots                             
     elif (input_year and selected_stats=='Yearly Statistics') :
         yearly_data = data[data['Year'] == input_year]  
-                              
+
 #TASK 2.5: Creating Graphs Yearly data
-                              
+
 #plot 1 Yearly Automobile sales using line chart for the whole period.
         yas= data.groupby('Year')['Automobile_Sales'].mean().reset_index()
         Y_chart1 = dcc.Graph(figure=px.line(yas,x='Year',y='Automobile_Sales',title='Yearly Automobile Sales(1980-2023)'))
