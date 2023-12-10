@@ -99,11 +99,7 @@ def update_output_container(input_year, selected_stats):
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sales
         
         R_chart4 = dcc.Graph(figure=px.bar(recession_data, x="Vehicle_Type", y="Automobile_Sales", color="unemployment_rate", barmode="group",title='Effect of Unemployment on Sales of different vehicle types'))
-        return
-        [
-            html.Div(className='chart-item', children=[html.Div(children=R_chart1),html.Div(children=R_chart2)]),
-            html.Div(className='chart-item', children=[html.Div(children=R_chart3),html.Div(children=R_chart4)])
-        ]
+        return[html.Div(className='chart-item', children=[html.Div(children=R_chart1),html.Div(children=R_chart2)]),html.Div(className='chart-item', children=[html.Div(children=R_chart3),html.Div(children=R_chart4)])]
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
  # Yearly Statistic Report Plots                             
