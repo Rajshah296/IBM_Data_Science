@@ -39,7 +39,7 @@ app.layout = html.Div([
             options=[{'label':'Yearly Statistics','value':'Yearly Statistics'},{'label':'Recession Period Statistics','value':'Recession Period Statistics'}],
             value='Select Statistics',
             placeholder='Select a report type',
-            style={'width':'50%','padding':'3px','font-size':'20px','text-align-last':'center'}
+            style={'width':'80%','padding':'3px','font-size':'20px','text-align-last':'center'}
         )
     ]),
     html.Div(dcc.Dropdown(
@@ -98,7 +98,7 @@ def update_output_container(input_year, selected_stats):
 
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sales
         
-        R_chart4 = px.bar(recession_data, x="Vehicle_Type", y="Automobile_Sales", color="Unemployment_Rate", barmode="group",title='Effect of Unemployment on Sales of different vehicle types')
+        R_chart4 = dcc.Graph(figure=px.bar(recession_data, x="Vehicle_Type", y="Automobile_Sales", color="unemployment_rate", barmode="group",title='Effect of Unemployment on Sales of different vehicle types'))
         return
         [
             html.Div(className='chart-item', children=[html.Div(children=R_chart1),html.Div(children=R_chart2)]),
@@ -108,7 +108,7 @@ def update_output_container(input_year, selected_stats):
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
  # Yearly Statistic Report Plots                             
     elif (input_year and selected_stats=='Yearly Statistics') :
-        yearly_data = data[data['Year'] == input_year]  
+        yearly_data = data[data['Year'] == input_year]
 
 #TASK 2.5: Creating Graphs Yearly data
 
@@ -129,8 +129,8 @@ def update_output_container(input_year, selected_stats):
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
-            html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)],style={}),
-            html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)],style={})
+            html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)]),
+            html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)])
         ]
         
     else:
