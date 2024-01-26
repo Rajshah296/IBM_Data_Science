@@ -106,8 +106,6 @@ def update_output_container(input_year, selected_stats):
     elif (input_year and selected_stats=='Yearly Statistics') :
         yearly_data = data[data['Year'] == input_year]
 
-#TASK 2.5: Creating Graphs Yearly data
-
 #plot 1 Yearly Automobile sales using line chart for the whole period.
         yas= data.groupby('Year')['Automobile_Sales'].mean().reset_index()
         Y_chart1 = dcc.Graph(figure=px.line(yas,x='Year',y='Automobile_Sales',title='Yearly Automobile Sales(1980-2023)'))
@@ -122,8 +120,7 @@ def update_output_container(input_year, selected_stats):
             # Total Advertisement Expenditure for each vehicle using pie chart
         exp_data=yearly_data.groupby('Vehicle_Type')['Advertising_Expenditure'].sum(numeric_only=True).reset_index()
         Y_chart4 = dcc.Graph(figure=px.pie(exp_data,names='Vehicle_Type',values='Advertising_Expenditure',title='Advertisment Expenditure per Vehicle Type'))
-
-#TASK 2.6: Returning the graphs for displaying Yearly data
+        #Returning the yearly report graphs. 
         return [
             html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)]),
             html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)])
