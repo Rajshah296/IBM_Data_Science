@@ -25,7 +25,7 @@ dropdown_options = [
     {'label': '...........', 'value': 'Yearly Statistics'},
     {'label': 'Recession Period Statistics', 'value': '.........'}
 ]
-# List of years 
+# List of years
 year_list = [i for i in range(1980, 2024, 1)]
 #---------------------------------------------------------------------------------------
 # Create the layout of the app
@@ -102,7 +102,7 @@ def update_output_container(input_year, selected_stats):
         return[html.Div(className='chart-item', children=[html.Div(children=R_chart1),html.Div(children=R_chart2)]),html.Div(className='chart-item', children=[html.Div(children=R_chart3),html.Div(children=R_chart4)])]
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
- # Yearly Statistic Report Plots                             
+# Yearly Statistic Report Plots                             
     elif (input_year and selected_stats=='Yearly Statistics') :
         yearly_data = data[data['Year'] == input_year]
 
@@ -113,7 +113,7 @@ def update_output_container(input_year, selected_stats):
 # Plot 2 Total Monthly Automobile sales using line chart.
         Y_chart2 = dcc.Graph(figure=px.line(yearly_data,x='Month',y='Automobile_Sales',title=f"Monthly Automobile Sales for the year {input_year}"))
 
-            # Plot bar chart for average number of vehicles sold during the given year
+# Plot 3: bar chart for average number of vehicles sold during the given year as per vehicle type.
         avr_vdata=yearly_data.groupby('Vehicle_Type')['Automobile_Sales'].mean(numeric_only=True).reset_index()
         Y_chart3 = dcc.Graph(figure=px.bar(avr_vdata,x='Vehicle_Type',y='Automobile_Sales',title=f'Average Vehicles Sold by Vehicle Type in the year {input_year}'))
 
