@@ -1,5 +1,6 @@
 # Import required libraries
 import pandas as pd
+import numpy as np
 import plotly.graph_objects as go
 import dash
 from dash import dcc
